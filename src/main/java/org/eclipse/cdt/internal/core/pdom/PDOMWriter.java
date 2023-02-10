@@ -129,9 +129,9 @@ public abstract class PDOMWriter implements IPDOMASTProcessor {
 	}
 
 	public static class FileContext {
-		final IIndexFragmentFile fContext;
-		final IIndexFragmentFile fOldFile;
-		IIndexFragmentFile fNewFile;
+		public final IIndexFragmentFile fContext;
+		public final IIndexFragmentFile fOldFile;
+		public IIndexFragmentFile fNewFile;
 		public boolean fLostPragmaOnceSemantics;
 
 		public FileContext(IIndexFragmentFile context, IIndexFragmentFile oldFile) {
@@ -160,7 +160,7 @@ public abstract class PDOMWriter implements IPDOMASTProcessor {
 		final Map<IASTPreprocessorIncludeStatement, Symbols> fSymbolMap = new HashMap<>();
 		final Set<IASTPreprocessorIncludeStatement> fContextIncludes = new HashSet<>();
 		final List<IStatus> fStatuses = new ArrayList<>();
-		Map<String, String> fReplacementHeaders; // Replacement headers keyed by file paths.
+		public Map<String, String> fReplacementHeaders; // Replacement headers keyed by file paths.
 
 		public Data(IASTTranslationUnit ast, FileInAST[] selectedFiles, IWritableIndex index) {
 			fAST = ast;

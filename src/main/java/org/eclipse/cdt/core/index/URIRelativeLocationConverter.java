@@ -54,6 +54,6 @@ public class URIRelativeLocationConverter implements IIndexLocationConverter {
 	@Override
 	public String toInternalFormat(IIndexFileLocation location) {
 		URI relative = baseURI.relativize(location.getURI());
-		return relative.isAbsolute() ? null : relative.getPath();
+		return relative.isAbsolute() ? relative.getPath() : relative.getPath();
 	}
 }

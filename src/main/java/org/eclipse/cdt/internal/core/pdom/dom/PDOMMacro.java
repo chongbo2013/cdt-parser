@@ -299,11 +299,12 @@ public class PDOMMacro implements IIndexMacro, IPDOMBinding {
 			// We need to specify what this method can return to know
 			// how to implement this. Existing implementations return
 			// the absolute path, so here we attempt to do the same.
-			IPath location = IndexLocationFactory.getAbsolutePath(file.getLocation());
-			if (location == null) {
-				return null;
-			}
-			String filename = location.toOSString();
+//			IPath location = IndexLocationFactory.getAbsolutePath(file.getLocation());
+//			if (location == null) {
+//				return null;
+//			}
+//			String filename = location.toOSString();
+			String filename = file.getLocation().getURI().getPath();
 			return new PDOMASTFileLocation(filename, getNodeOffset(), getNodeLength());
 		} catch (CoreException e) {
 			CCorePlugin.log(e);
