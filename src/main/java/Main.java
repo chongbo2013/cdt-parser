@@ -23,11 +23,12 @@ public class Main {
         CustomIndexerTask indexerTask = new CustomIndexerTask(indexerInputAdapter,rootPath,includes);
         indexerTask.runTask(new NullProgressMonitor());
         List<IASTTranslationUnit> translationUnits = indexerTask.getTranslationUnitMap().entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
-        for (IASTTranslationUnit translationUnit : translationUnits) {
 
+        for (IASTTranslationUnit translationUnit : translationUnits) {
             translationUnit.accept(new ASTVisitor(true) {
                 @Override
                 public int visit(IASTExpression expression) {
+                    String fileName = expression.getFileLocation().getFileName();
                     if (expression instanceof IASTBinaryExpression binaryExpression) {
                         IASTExpression operand1 = binaryExpression.getOperand1();
                         IASTExpression operand2 = binaryExpression.getOperand2();
